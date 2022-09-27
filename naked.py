@@ -4,14 +4,24 @@ import datetime
 import time
 import yaml
 
+from configparser import ConfigParser
 from datetime import datetime
+
 print('Asteroid processing service')
 
 # Initiating and reading config values
 print('Loading configuration from file')
 
-nasa_api_key = "op7dcdIYdz1Q4W6vs23Iqskq9ea9omr8tpeZ7zbY"
-nasa_api_url = "https://api.nasa.gov/neo/"
+try:
+	config = ConfigParser()
+	config.read('config.ini')
+
+	nasa_api_key = config.get('nasa', 'api_key')
+	nasa_api_url = config.get('nasa', 'api_url')
+
+except:
+	logger.exception('')
+print('DONE')
 
 # Getting todays date
 dt = datetime.now()
@@ -103,7 +113,7 @@ if r.status_code == 200:
 
 # Print asteroid type and count
 	print("Hazardous asteorids: " + str(len(ast_hazardous)) + " | Safe asteroids: " + str(len(ast_safe)))
-	
+
 # Prints info about hazardous asteroids
 	if len(ast_hazardous) > 0:
 		ast_hazardous.sort(key = lambda x: x[4], reverse=False)
