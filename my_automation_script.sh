@@ -1,7 +1,7 @@
 #!/bin/bash
 sec_secret_storage_loc="/my_secret_files"
 
-echo "Initialising script for running naked.py and my_test_naked.py"
+echo "!!!Initialising automation script!!!"
 echo "-----------------"
 
 echo "Checking if config.ini exists in the current working dir -->"
@@ -25,12 +25,12 @@ $python_exec_loc test_config.py
 if [ $? -eq 0 ]; then echo "OK"; else echo "Configuration test FAILED"; exit 1; fi
 echo "-----------------"
 
-echo "Running DB migrations"
-$python_exec_loc migrate_db.py
-if [ $? -eq 0 ]; then echo "OK"; else echo "DB migration FAILED"; exit 1; fi
+echo "Running naked.py file"
+$python_exec_loc naked.py
+if [ $? -eq 0 ]; then echo "OK"; else echo "Running naked.py FAILED"; exit 1; fi
 echo "-----------------"
 
-echo "Running custom naked file test"
+echo "Running custom naked file TEST"
 $python_exec_loc my_test_naked.py
 if [ $? -eq 0 ]; then echo "OK"; else echo "Worker test FAILED"; exit 1; fi
 echo "-----------------"
