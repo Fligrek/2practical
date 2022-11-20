@@ -46,3 +46,5 @@ if added_ast_today <= 0:
   print("No new asteroids added today!")
 else:
   print("There have been",added_ast_today,"added asteroids added today.")
+print("-----------------")
+
