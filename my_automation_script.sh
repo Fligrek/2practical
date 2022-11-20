@@ -27,7 +27,7 @@ echo "-----------------"
 
 echo "Running naked.py file"
 $python_exec_loc naked.py
-if [ $? -eq 0 ]; then echo "OK"; else echo "DB migration FAILED"; exit 1; fi
+if [ $? -eq 0 ]; then echo "OK"; else echo "Running naked.py FAILED"; exit 1; fi
 echo "-----------------"
 
 echo "Running custom naked file TEST"
